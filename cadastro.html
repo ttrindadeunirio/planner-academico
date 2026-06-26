@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Cadastro</title>
+</head>
+
+<body>
+  <div class="page">
+
+    <main>
+      <div class="container-cadastro">
+        <h2>Planner Acadêmico UNIRIO</h2>
+        <p><strong>Primeiro Acesso</strong></p>
+
+        <form>
+          <div class="field">E-mail:</div>
+          <input id="campo-email" type="email" placeholder="seu.nome@edu.unirio.br" required>
+          <div class="erro" id="erro-email"></div>
+
+          <div class="field">Senha:</div>
+          <input id="campo-senha" type="password" placeholder="Digite sua senha" required>
+          <div class="erro" id="erro-senha"></div>
+
+          <div class="field">Confirmar senha:</div>
+          <input id="campo-confirmar" type="password" placeholder="Digite sua senha novamente" required>
+          <div class="erro" id="erro-confirmar"></div>
+
+          <div class="buttons">
+            <button type="reset" class="reset">Limpar</button>
+            <button type="submit" class="submit">Cadastrar</button>
+          </div>
+        </form>
+
+        <div class="bottomtext">
+          Já possui conta? <a href="login.html">Entrar</a>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Coelho, Plakhotnikov, Trindade. Todos os direitos reservados.</p>
+    </footer>
+
+  <script src="cadastro.js"></script>
+
+  </div>
+</body>
+</html>

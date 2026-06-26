@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Agenda - Planner Acadêmico</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="agenda.html">
+        <img src="unirio.png" alt="Logotipo UNIRIO">
+      </a>
+      <span class="titulo-site">PLANNER ACADÊMICO</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="agenda.html" class="nav-ativo">Agenda</a></li>
+      <li><a href="notas.html">Notas</a></li>
+      <li><a href="desempenho.html">Desempenho</a></li>
+      <li class="menu-config">
+        <button class="btn-config" id="btn-config" aria-label="Configurações">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06
+                     a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09
+                     A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83
+                     l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09
+                     A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83
+                     l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09
+                     a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83
+                     l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09
+                     a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+        <div class="dropdown-config" id="dropdown-config">
+          <button class="btn-logout" id="btn-logout">Sair da conta</button>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Agenda</h1>
+
+    <section class="agenda-layout">
+      <div class="calendario-wrapper">
+        <div class="calendario-header">
+          <button class="btn-nav anterior">&lt;</button>
+          <span class="mes-ano"><span id="mes"></span> <span id="ano"></span></span>
+          <button class="btn-nav proximo">&gt;</button>
+        </div>
+
+        <div class="semana">
+          <div>Dom</div>
+          <div>Seg</div>
+          <div>Ter</div>
+          <div>Qua</div>
+          <div>Qui</div>
+          <div>Sex</div>
+          <div>Sáb</div>
+        </div>
+
+        <div class="dias"></div>
+      </div>
+
+      <div class="painel-evento">
+        <h3 id="eventoTitulo">Novo Evento</h3>
+
+        <label for="inputTitulo">Título</label>
+        <input type="text" id="inputTitulo" placeholder="Ex: Trabalho de PI">
+
+        <label for="inputData">Data</label>
+        <input type="date" id="inputData">
+
+        <label for="inputHora">Hora</label>
+        <input type="time" id="inputHora">
+
+        <label for="inputCategoria">Categoria</label>
+        <select id="inputCategoria"></select>
+
+        <div class="painel-botoes">
+          <button id="btnExcluir" class="btn-excluir" style="display:none;">Excluir</button>
+          <button id="btnCancelar" class="btn-cancelar">Cancelar</button>
+          <button id="btnSalvar" class="btn-salvar">Salvar</button>
+        </div>
+
+        <div id="eventos-hoje" class="eventos-hoje-wrapper" style="display:none;">
+          <h4 class="eventos-hoje-titulo">Eventos do dia</h4>
+          <div id="lista-eventos-hoje"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lista-eventos-section">
+      <div class="lista-eventos-header">
+        <h3>Eventos Registrados</h3>
+        <select id="filtroCategoria"></select>
+      </div>
+      <div id="lista-todos-eventos" class="lista-todos-eventos"></div>
+    </section>
+  </div>
+
+<script src="agenda.js"></script>
+
+  <footer>
+    <p>&copy; 2026 Coelho, Plakhotnikov, Trindade. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

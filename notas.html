@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Notas do Aluno - Planner Acadêmico</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="notas.js" defer></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="agenda.html">
+        <img src="unirio.png" alt="Logotipo UNIRIO">
+      </a>
+      <span class="titulo-site">PLANNER ACADÊMICO</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="notas.html">Notas</a></li>
+      <li><a href="desempenho.html">Desempenho</a></li>
+<li class="menu-config">
+        <button class="btn-config" id="btn-config" aria-label="Configurações">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06
+                     a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09
+                     A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83
+                     l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09
+                     A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83
+                     l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09
+                     a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83
+                     l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09
+                     a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+        <div class="dropdown-config" id="dropdown-config">
+        <button class="btn-logout" id="btn-logout">Sair da conta</button>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Notas do Aluno</h1>
+
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>Disciplina</th>
+            <th>Prova 1</th>
+            <th>Prova 2</th>
+            <th>Projeto</th>
+            <th>Prova Final</th>
+            <th>Média Final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Algebra Linear</td>
+            <td>8.5</td>
+            <td>7.0</td>
+            <td>-</td>
+            <td>-</td>
+            <td>7.8</td>
+          </tr>
+          <tr>
+            <td>Projeto Integrador I</td>
+            <td>-</td>
+            <td>-</td>
+            <td>10</td>
+            <td>-</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Técnicas de Programação</td>
+            <td>6.0</td>
+            <td>8.0</td>
+            <td>7.5</td>
+            <td>-</td>
+            <td>7.2</td>
+          </tr>
+          <tr>
+            <td>Gestão de Processos de Negócios</td>
+            <td>9.0</td>
+            <td>8.5</td>
+            <td>-</td>
+            <td>-</td>
+            <td>8.8</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+<section class="form-section">
+      <h3>Gerenciar Disciplinas e Notas</h3>
+      <div class="form-row">
+        <input type="text" id="nova-disciplina" placeholder="Nome da nova disciplina">
+        <button type="button" class="btn-add" id="ad18" >Adicionar Disciplina</button>
+      </div>
+
+      <br>
+      <div class="form-row">
+        <select id="select-disciplina">
+          <option value="">Selecione a Disciplina</option>
+          <option>Algebra Linear</option>
+          <option>Projeto Integrador 1</option>
+          <option>Técnicas de Programação</option>
+          <option>Gestão de Processos de Negócios</option>
+        </select>
+
+        <select id="select-tipo">
+          <option value="">Tipo de Avaliação</option>
+          <option>Prova 1</option>
+          <option>Prova 2</option>
+          <option>Projeto</option>
+          <option>Prova Final</option>
+        </select>
+
+        <input type="number" id="valor-nota" placeholder="Nota" step="0.1" min="0" max="10">
+        
+        <button type="button" class="btn-add">Adicionar Nota</button>
+      </div>
+
+      <br>
+      <div class="form-row">
+        <select id="select-remover-disciplina">
+          <option value="">Selecione a Disciplina para Remover</option>
+        </select>
+        <button type="button" class="btn-add" id="btn-remover-disciplina" style="background-color: #e53935; color: white;">Remover Disciplina</button>
+      </div>
+    </section>
+
+    <section class="form-section" id="section-faltas">
+      <h3>Registrar Faltas</h3>
+
+      <div id="faltas-lista"></div>
+
+      <div class="form-row" style="margin-top: 16px;">
+        <select id="select-disciplina-falta">
+          <option value="">Selecione a Disciplina</option>
+        </select>
+        <input type="number" id="limite-falta" placeholder="Limite de faltas" min="1" step="1" style="max-width: 160px; flex: 0 0 160px;">
+        <button type="button" class="btn-add" id="btn-definir-limite">Definir Limite</button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Coelho, Plakhotnikov, Trindade. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

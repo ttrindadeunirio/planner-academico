@@ -1,5 +1,3 @@
-# planner-academico-unirio
-
 1. Introdução
 
 1.1 Contexto do Trabalho
