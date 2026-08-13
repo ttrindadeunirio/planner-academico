@@ -256,30 +256,19 @@ async function enviarDadosParaNuvem() {
   localStorage.removeItem(PLANNER_SYNC_PENDING);
 }
 
-function jsonp(url) {
-  return new Promise(function(resolve, reject) {
-    const callback = "plannerSyncCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
-    const script = document.createElement("script");
-    const separator = url.indexOf("?") === -1 ? "?" : "&";
-
-    window[callback] = function(data) {
-      cleanup();
-      resolve(data);
-    };
-
-    function cleanup() {
-      delete window[callback];
-      script.remove();
-    }
-
-    script.onerror = function() {
-      cleanup();
-      reject(new Error("Nao foi possivel acessar o Apps Script."));
-    };
-
-    script.src = url + separator + "callback=" + encodeURIComponent(callback);
-    document.body.appendChild(script);
+// Substitua a função jsonp original por esta chamada usando fetch com redirect
+async function jsonp(url) {
+  // O Apps Script aceita GET normal do GitHub Pages se seguirmos o redirecionamento (redirect: 'follow')
+  const resposta = await fetch(url, {
+    method: "GET",
+    redirect: "follow"
   });
+
+  if (!resposta.ok) {
+    throw new Error("Falha na rede ao acessar o Apps Script.");
+  }
+
+  return await resposta.json();
 }
 
 async function carregarDaNuvem() {
