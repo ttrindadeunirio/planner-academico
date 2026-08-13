@@ -86,4 +86,4 @@ Suas funções primordiais incluem a gestão de um calendário interativo com fe
 * **Fluxo:** Esta tela é alimentada pelos dados inseridos na tela de "Notas" e pelos registros de presença. É uma tela de consulta final para tomada de decisão estratégica do estudante.
 
 ---
-*(c) Matheus Coelho, Grigory Plakhotnikov e Thiago Trindade*
+*(c) Matheus Coelho, Grigory Plakhotnikov, Rafael Versiani Thiago Trindade*
