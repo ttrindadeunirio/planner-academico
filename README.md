@@ -13,11 +13,11 @@ O objetivo geral deste trabalho é desenvolver uma plataforma de planejamento ac
 Implementar uma agenda interativa para visualização de compromissos acadêmicos e feriados.
 Criar um sistema de gerenciamento de notas com cálculo automático de médias.
 Desenvolver ferramentas visuais de monitoramento de desempenho, incluindo a comparação com médias da turma e o controle preventivo do limite de faltas.
-Garantir a segurança dos dados através de um sistema de autenticação de usuários (Login/Cadastro).
+Garantir que os dados do estudante fiquem disponíveis localmente no navegador através de localStorage, com sincronização opcional por chave de acesso.
 
 1.3 Minimundo
 
-O sistema, denominado Planner Acadêmico UNIRIO, funciona como uma central de controle para o estudante. O fluxo inicia-se com o cadastro do usuário (e-mail e senha). Ao acessar o sistema, o aluno tem acesso a uma Agenda em formato de calendário, onde pode visualizar feriados nacionais e compromissos acadêmicos (como provas e trabalhos), além de filtrar a exibição desses eventos por disciplina (ex: Algebra Linear, PI1, TP).
+O sistema, denominado Planner Acadêmico UNIRIO, funciona como uma central de controle para o estudante. O fluxo inicia-se diretamente na Agenda em formato de calendário, onde o aluno pode visualizar feriados nacionais e compromissos acadêmicos (como provas e trabalhos), além de filtrar a exibição desses eventos por disciplina (ex: Algebra Linear, PI1, TP). Os dados são salvos no localStorage do próprio navegador e podem ser sincronizados opcionalmente por uma chave de acesso anônima.
 Na seção de Notas, o usuário pode cadastrar suas disciplinas e inserir as notas de diferentes avaliações (P1, P2, Projetos). O sistema calcula automaticamente a média parcial e final, indicando a situação do aluno.
 O diferencial reside no Relatório de Desempenho, onde os dados são processados e exibidos graficamente. O sistema apresenta barras de comparação entre a nota do aluno e a média da turma, um gráfico de pizza que segmenta o total de presenças e faltas por matéria, e "trilhos verticais" de progresso que alertam visualmente o quão próximo o estudante está de atingir o limite de 25% de faltas permitido pela universidade. O sistema permite ainda a edição e remoção de registros, garantindo que o planner reflita sempre a situação atual do semestre.
 
@@ -28,11 +28,17 @@ O diferencial reside no Relatório de Desempenho, onde os dados são processados
 O sistema Planner Acadêmico UNIRIO compreende o desenvolvimento de uma interface web para autogestão estudantil.
 
 O que será incluído:
+<<<<<<< HEAD
 Módulo de Autenticação: Cadastro de novos usuários e login seguro.
-Gestão de Agenda: Visualização em calendário de eventos acadêmicos, tarefas e feriados, com filtros por categoria.
-Gerenciamento Acadêmico (CRUD): Inserção, edição e exclusão de disciplinas, notas e contagem de faltas.
-Dashboard de Desempenho: Geração automática de indicadores visuais (gráficos de barras e pizza) baseados nos dados inseridos pelo usuário.
-Cálculos Automáticos: Cálculo de médias finais e projeção de limite de faltas baseado na carga horária da disciplina.
+=======
+Persistência Local: Armazenamento dos dados acadêmicos no localStorage do navegador, sem cadastro ou login.
+Sincronização Automática: Uso de uma chave de acesso aleatória para criptografar no navegador com AES-GCM/PBKDF2-SHA256, salvar alterações e carregar dados automaticamente em uma planilha privada via Google Apps Script.
+
+> > > > > > > 296dc78 (Add project changes)
+> > > > > > > Gestão de Agenda: Visualização em calendário de eventos acadêmicos, tarefas e feriados, com filtros por categoria.
+> > > > > > > Gerenciamento Acadêmico (CRUD): Inserção, edição e exclusão de disciplinas, notas e contagem de faltas.
+> > > > > > > Dashboard de Desempenho: Geração automática de indicadores visuais (gráficos de barras e pizza) baseados nos dados inseridos pelo usuário.
+> > > > > > > Cálculos Automáticos: Cálculo de médias finais e projeção de limite de faltas baseado na carga horária da disciplina.
 
 Limitações e o que NÃO será construído:
 Integração com Sistemas Oficiais: O sistema não realizará sincronização automática com o SIE ou Portal do Aluno da UNIRIO (os dados devem ser inseridos manualmente pelo usuário).
@@ -52,8 +58,13 @@ UNIRIO: Universidade Federal do Estado do Rio de Janeiro.
 
 2.3 Atores do Sistema
 
+<<<<<<< HEAD
 Estudante (Ator Principal): Usuário devidamente cadastrado que utiliza o sistema para organizar sua rotina. Suas funções incluem: inserir notas, gerenciar faltas, adicionar compromissos à agenda e monitorar seu próprio progresso através dos gráficos.
-Administrador (Ator de Suporte): Responsável pela manutenção técnica do sistema, gerenciamento da base de dados e atualização de feriados fixos no calendário global.
+=======
+Estudante (Ator Principal): Usuário que utiliza o sistema localmente para organizar sua rotina. Suas funções incluem: inserir notas, gerenciar faltas, adicionar compromissos à agenda e monitorar seu próprio progresso através dos gráficos.
+
+> > > > > > > 296dc78 (Add project changes)
+> > > > > > > Administrador (Ator de Suporte): Responsável pela manutenção técnica do sistema, gerenciamento da base de dados e atualização de feriados fixos no calendário global.
 
 3. Protótipo Inicial do Sistema
 
@@ -64,24 +75,41 @@ Suas funções primordiais incluem a gestão de um calendário interativo com fe
 
 3.2 Descrição das características do sistema de cada tela
 
+<<<<<<< HEAD
+
 1. Tela de Login e Cadastro (Acesso)
-Características: Interface limpa com campos de e-mail e senha. A tela de cadastro inclui confirmação de senha para evitar erros de digitação.
-Fluxo: O usuário inicia no Login. Caso não possua conta, clica em "Criar senha" para ser redirecionado ao Cadastro. Após o sucesso na autenticação ou registro, o sistema direciona o usuário automaticamente para a Tela de Agenda (Home).
+   Características: Interface limpa com campos de e-mail e senha. A tela de cadastro inclui confirmação de senha para evitar erros de digitação.
+   Fluxo: O usuário inicia no Login. Caso não possua conta, clica em "Criar senha" para ser redirecionado ao Cadastro. Após o sucesso na autenticação ou registro, o sistema direciona o usuário automaticamente para a Tela de Agenda (Home).
 
 2. Tela de Agenda (Interface Principal)
-Características: Apresenta um calendário central expandido e um mini-calendário lateral para navegação rápida entre meses. Contém uma barra lateral de "Exibição" com checkboxes para filtrar a visibilidade de feriados e eventos de disciplinas específicas (AL, PI1, TP, GPN). Possui um botão suspenso "Adicionar" para inserção rápida de novos eventos ou tarefas.
-Fluxo: Funciona como o "hub" do sistema. Através da navbar superior, o usuário navega para as telas de "Notas" ou "Desempenho". Ao clicar em um dia específico, o sistema permite a visualização detalhada dos compromissos agendados.
+   Características: Apresenta um calendário central expandido e um mini-calendário lateral para navegação rápida entre meses. Contém uma barra lateral de "Exibição" com checkboxes para filtrar a visibilidade de feriados e eventos de disciplinas específicas (AL, PI1, TP, GPN). Possui um botão suspenso "Adicionar" para inserção rápida de novos eventos ou tarefas.
+   Fluxo: Funciona como o "hub" do sistema. Através da navbar superior, o usuário navega para as telas de "Notas" ou "Desempenho". Ao clicar em um dia específico, o sistema permite a visualização detalhada dos compromissos agendados.
 
 3. Tela de Notas (Gestão Acadêmica)
-Características: Exibe uma tabela organizada por disciplina, colunas para diferentes tipos de avaliações (P1, P2, Projeto, Final) e o cálculo da média final. Abaixo da tabela, há uma seção de formulários para "Gerenciar Disciplinas e Notas", permitindo a adição de novas matérias ou o lançamento de notas individuais através de menus de seleção (dropdowns).
-Fluxo: O usuário insere os dados no formulário e, ao clicar em "Adicionar", a tabela é atualizada em tempo real. A navegação de saída ocorre pela navbar para retornar à Agenda ou prosseguir para o Desempenho.
+   Características: Exibe uma tabela organizada por disciplina, colunas para diferentes tipos de avaliações (P1, P2, Projeto, Final) e o cálculo da média final. Abaixo da tabela, há uma seção de formulários para "Gerenciar Disciplinas e Notas", permitindo a adição de novas matérias ou o lançamento de notas individuais através de menus de seleção (dropdowns).
+   Fluxo: O usuário insere os dados no formulário e, ao clicar em "Adicionar", a tabela é atualizada em tempo real. A navegação de saída ocorre pela navbar para retornar à Agenda ou prosseguir para o Desempenho.
 
-4. Tela de Desempenho (Análise Gráfica)
-Características: Interface puramente visual baseada em quatro seções de monitoramento:
-Médias por Disciplina: Gráfico de barras horizontais simples.
-Comparação Aluno vs. Turma: Barras sobrepostas para análise de competitividade/progresso.
-Distribuição de Presenças/Faltas: Gráfico de pizza que segmenta as ausências por disciplina.
-Limite de Faltas: Indicadores de "trilho vertical" que mostram visualmente a proximidade do teto de 25% de faltas.
-Fluxo: Esta tela é alimentada pelos dados inseridos na tela de "Notas" e pelos registros de presença. É uma tela de consulta final para tomada de decisão estratégica do estudante.
+4. # Tela de Desempenho (Análise Gráfica)
+5. Tela de Agenda (Interface Principal)
+   Características: Apresenta um calendário central expandido e um mini-calendário lateral para navegação rápida entre meses. Contém uma barra lateral de "Exibição" com checkboxes para filtrar a visibilidade de feriados e eventos de disciplinas específicas (AL, PI1, TP, GPN). Possui um botão suspenso "Adicionar" para inserção rápida de novos eventos ou tarefas.
+   Fluxo: Funciona como o "hub" do sistema e é aberta diretamente no primeiro acesso. Através da navbar superior, o usuário navega para as telas de "Notas" ou "Desempenho". Ao clicar em um dia específico, o sistema permite a visualização detalhada dos compromissos agendados.
 
+6. Tela de Notas (Gestão Acadêmica)
+   Características: Exibe uma tabela organizada por disciplina, colunas para diferentes tipos de avaliações (P1, P2, Projeto, Final) e o cálculo da média final. Abaixo da tabela, há uma seção de formulários para "Gerenciar Disciplinas e Notas", permitindo a adição de novas matérias ou o lançamento de notas individuais através de menus de seleção (dropdowns).
+   Fluxo: O usuário insere os dados no formulário e, ao clicar em "Adicionar", a tabela é atualizada em tempo real. A navegação de saída ocorre pela navbar para retornar à Agenda ou prosseguir para o Desempenho.
+
+7. Tela de Desempenho (Análise Gráfica)
+   > > > > > > > 296dc78 (Add project changes)
+   > > > > > > > Características: Interface puramente visual baseada em quatro seções de monitoramento:
+   > > > > > > > Médias por Disciplina: Gráfico de barras horizontais simples.
+   > > > > > > > Comparação Aluno vs. Turma: Barras sobrepostas para análise de competitividade/progresso.
+   > > > > > > > Distribuição de Presenças/Faltas: Gráfico de pizza que segmenta as ausências por disciplina.
+   > > > > > > > Limite de Faltas: Indicadores de "trilho vertical" que mostram visualmente a proximidade do teto de 25% de faltas.
+   > > > > > > > Fluxo: Esta tela é alimentada pelos dados inseridos na tela de "Notas" e pelos registros de presença. É uma tela de consulta final para tomada de decisão estratégica do estudante.
+
+<<<<<<< HEAD
 (c) Matheus Coelho, Grigory Plakhotnikov e Thiago Trindade
+=======
+(c) Matheus Coelho, Grigory Plakhotnikov e Thiago Trindade
+
+> > > > > > > 296dc78 (Add project changes)

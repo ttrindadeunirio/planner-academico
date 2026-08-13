@@ -148,24 +148,6 @@ const dataAtual = new Date();
 let mesAtual = dataAtual.getMonth();
 let anoAtual = dataAtual.getFullYear();
 
-const btnConfig = document.getElementById('btn-config');
-const dropdownConfig = document.getElementById('dropdown-config');
-const btnLogout = document.getElementById('btn-logout');
-
-btnConfig.addEventListener('click', function(e) {
-  e.stopPropagation();
-  dropdownConfig.classList.toggle('aberto');
-});
-
-document.addEventListener('click', function() {
-  dropdownConfig.classList.remove('aberto');
-});
-
-btnLogout.addEventListener('click', function() {
-  sessionStorage.removeItem('plannerUnirio_usuarioLogado');
-  window.location.href = 'login.html';
-});
-
 function popularSelectCategoria() {
   inputCategoria.innerHTML = '';
   for (let i = 0; i < disciplinasNotas.length; i++) {

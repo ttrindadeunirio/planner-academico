@@ -2,66 +2,14 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
-  <title>Recuperar Senha</title>
+  <meta http-equiv="refresh" content="0; url=agenda.html">
+  <title>Planner Acadêmico UNIRIO</title>
 </head>
 
 <body>
-
-  <div class="page">
-
-    <main>
-      <div class="container-cadastro">
-        <h2>Planner Acadêmico UNIRIO</h2>
-        <p><strong>Recuperar Senha</strong></p>
-
-        <div id="etapa-1">
-          <p style="text-align:center; color:#838383; font-size:14px;">
-            Informe o e-mail cadastrado para redefinir sua senha.
-          </p>
-
-          <div class="field">E-mail:</div>
-          <input id="campo-email" type="email" placeholder="Digite seu e-mail" required>
-          <div class="erro" id="erro-email"></div>
-
-          <div class="buttons" style="margin-top: 15px;">
-            <button type="button" class="reset" onclick="window.location.href='login.html'">Voltar</button>
-            <button type="button" class="submit" id="btn-verificar">Verificar</button>
-          </div>
-        </div>
-
-        <div id="etapa-2" style="display:none;">
-          <p style="text-align:center; color:#838383; font-size:14px;">
-            E-mail verificado. Defina sua nova senha.
-          </p>
-
-          <div class="field">Nova senha:</div>
-          <input id="campo-nova-senha" type="password" placeholder="Digite a nova senha" required>
-          <div class="erro" id="erro-nova-senha"></div>
-
-          <div class="field">Confirmar nova senha:</div>
-          <input id="campo-confirmar" type="password" placeholder="Confirme a nova senha" required>
-          <div class="erro" id="erro-confirmar"></div>
-
-          <div class="buttons" style="margin-top: 15px;">
-            <button type="button" class="reset" onclick="window.location.href='login.html'">Cancelar</button>
-            <button type="button" class="submit" id="btn-redefinir">Redefinir</button>
-          </div>
-        </div>
-
-        <div class="bottomtext" style="margin-top: 15px;">
-          Lembrou a senha? <a href="login.html">Entrar</a>
-        </div>
-
-      </div>
-    </main>
-
-    <footer>
-      <p>&copy; 2026 Coelho, Plakhotnikov, Trindade. Todos os direitos reservados.</p>
-    </footer>
-
-  <script src="recuperar.js"></script>
-
-  </div>
+  <script>
+    window.location.replace("agenda.html");
+  </script>
+  <p>Redirecionando para a agenda...</p>
 </body>
 </html>
