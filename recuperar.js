@@ -1,5 +1,5 @@
 function carregarUsuarios() {
-  const salvo = localStorage.getItem("plannerUnirio_usuarios");
+  const salvo = localStorage.getItem("plannerAcademico_usuarios");
   if (salvo) {
     return JSON.parse(salvo);
   } else {
@@ -8,7 +8,7 @@ function carregarUsuarios() {
 }
 
 function salvarUsuarios(usuarios) {
-  localStorage.setItem("plannerUnirio_usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("plannerAcademico_usuarios", JSON.stringify(usuarios));
 }
 
 function mostrarErro(id, msg) {

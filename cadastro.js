@@ -1,5 +1,5 @@
 function carregarUsuarios() {
-  const salvo = localStorage.getItem("plannerUnirio_usuarios");
+  const salvo = localStorage.getItem("plannerAcademico_usuarios");
   if (salvo) {
     return JSON.parse(salvo);
   } else {
@@ -8,7 +8,7 @@ function carregarUsuarios() {
 }
 
 function salvarUsuarios(usuarios) {
-  localStorage.setItem("plannerUnirio_usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("plannerAcademico_usuarios", JSON.stringify(usuarios));
 }
 
 function mostrarErro(id, msg) {
@@ -30,12 +30,12 @@ document.querySelector("form").addEventListener("submit", function (e) {
   const senha = document.getElementById("campo-senha").value;
   const confirmar = document.getElementById("campo-confirmar").value;
 
-  const DOMINIO_PERMITIDO = "@edu.unirio.br";
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   let valido = true;
 
-  if (!email.toLowerCase().endsWith(DOMINIO_PERMITIDO)) {
-    mostrarErro("erro-email", "O e-mail deve ser institucional (" + DOMINIO_PERMITIDO + ").");
+  if (!EMAIL_REGEX.test(email)) {
+    mostrarErro("erro-email", "Informe um e-mail válido.");
     valido = false;
   }
 

@@ -1,5 +1,5 @@
 function carregarUsuarios() {
-  const salvo = localStorage.getItem("plannerUnirio_usuarios");
+  const salvo = localStorage.getItem("plannerAcademico_usuarios");
   if (salvo) {
     return JSON.parse(salvo);
   } else {
@@ -45,7 +45,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
     return;
   }
 
-  sessionStorage.setItem("plannerUnirio_usuarioLogado", email);
+  sessionStorage.setItem("plannerAcademico_usuarioLogado", email);
   window.location.href = "agenda.html";
 });
 
