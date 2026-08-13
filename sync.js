@@ -2,12 +2,12 @@ const PLANNER_SYNC_URL = "https://script.google.com/macros/s/AKfycbzEHcqeK6hJUrA
 
 const PLANNER_SYNC_KEYS = [
   "agenda_eventos",
-  "plannerUnirio_notas",
-  "plannerUnirio_faltas"
+  "plannerAcademico_notas",
+  "plannerAcademico_faltas"
 ];
 
-const PLANNER_ACCESS_KEY = "plannerUnirio_chaveAcesso";
-const PLANNER_SYNC_PENDING = "plannerUnirio_syncPendente";
+const PLANNER_ACCESS_KEY = "plannerAcademico_chaveAcesso";
+const PLANNER_SYNC_PENDING = "plannerAcademico_syncPendente";
 const PLANNER_REQUIRED_BACKEND_VERSION = "encrypted-vault-v2";
 
 const syncState = {
@@ -252,7 +252,7 @@ async function enviarDadosParaNuvem() {
     throw new Error(json.error || "Nao foi possivel salvar.");
   }
 
-  localStorage.setItem("plannerUnirio_ultimaSync", new Date().toISOString());
+  localStorage.setItem("plannerAcademico_ultimaSync", new Date().toISOString());
   localStorage.removeItem(PLANNER_SYNC_PENDING);
 }
 
@@ -310,7 +310,7 @@ async function carregarDadosDaNuvem() {
   }
 
   const alterou = aplicarDadosLocais(data);
-  localStorage.setItem("plannerUnirio_ultimaSync", new Date().toISOString());
+  localStorage.setItem("plannerAcademico_ultimaSync", new Date().toISOString());
 
   if (deveMigrarCofreLegado) {
     await enviarDadosParaNuvem();
@@ -453,21 +453,33 @@ function criarSyncModal() {
 }
 
 function criarBotaoSync() {
-  const nav = document.querySelector(".nav-links");
-  if (!nav) return;
+  const botaoCofre = document.getElementById("btn-cofre");
+  const dropdownConfig = document.getElementById("dropdown-config");
+  if (!botaoCofre) return;
 
-  const item = document.createElement("li");
-  const botao = document.createElement("button");
-  botao.type = "button";
-  botao.className = "nav-sync-button";
-  botao.textContent = "Cofre";
-  botao.addEventListener("click", abrirSyncModal);
+  botaoCofre.addEventListener("click", function() {
+    if (dropdownConfig) dropdownConfig.classList.remove("aberto");
+    abrirSyncModal();
+  });
+}
 
-  item.appendChild(botao);
-  nav.appendChild(item);
+function configurarMenuConfig() {
+  const btnConfig = document.getElementById("btn-config");
+  const dropdownConfig = document.getElementById("dropdown-config");
+  if (!btnConfig || !dropdownConfig) return;
+
+  btnConfig.addEventListener("click", function(e) {
+    e.stopPropagation();
+    dropdownConfig.classList.toggle("aberto");
+  });
+
+  document.addEventListener("click", function() {
+    dropdownConfig.classList.remove("aberto");
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  configurarMenuConfig();
   criarBotaoSync();
   criarSyncModal();
   observarLocalStorage();

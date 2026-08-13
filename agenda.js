@@ -98,7 +98,7 @@ function carregarDoLocalStorage() {
 }
 
 function carregarDisciplinas() {
-  const dados = localStorage.getItem('plannerUnirio_notas');
+  const dados = localStorage.getItem('plannerAcademico_notas');
   if (!dados) {
     return [];
   }

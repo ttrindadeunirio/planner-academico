@@ -1,5 +1,5 @@
-const dadosSalvos = localStorage.getItem("plannerUnirio_notas");
-const faltasSalvas = localStorage.getItem("plannerUnirio_faltas");
+const dadosSalvos = localStorage.getItem("plannerAcademico_notas");
+const faltasSalvas = localStorage.getItem("plannerAcademico_faltas");
 let disciplinas = [];
 let faltas = {};
 
@@ -32,11 +32,11 @@ const faltasLista = document.getElementById("faltas-lista");
 let disciplinasExpandidas = new Set();
 
 function salvarDados() {
-  localStorage.setItem("plannerUnirio_notas", JSON.stringify(disciplinas));
+  localStorage.setItem("plannerAcademico_notas", JSON.stringify(disciplinas));
 }
 
 function salvarFaltas() {
-  localStorage.setItem("plannerUnirio_faltas", JSON.stringify(faltas));
+  localStorage.setItem("plannerAcademico_faltas", JSON.stringify(faltas));
 }
 
 function escaparHTML(texto) {

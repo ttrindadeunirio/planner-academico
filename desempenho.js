@@ -1,8 +1,8 @@
 const CORES_FALTAS = ["#ff4d4d", "#ff8c1a", "#ffcc00", "#e60073", "#9b59b6", "#1abc9c"];
 
 function carregarDados() {
-  const dadosSalvos = localStorage.getItem("plannerUnirio_notas");
-  const faltasSalvas = localStorage.getItem("plannerUnirio_faltas");
+  const dadosSalvos = localStorage.getItem("plannerAcademico_notas");
+  const faltasSalvas = localStorage.getItem("plannerAcademico_faltas");
   
   const obj = { disciplinas: [], faltas: {} };
   if (dadosSalvos) { obj.disciplinas = JSON.parse(dadosSalvos); }
