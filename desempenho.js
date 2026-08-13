@@ -7,40 +7,8 @@ function carregarDados() {
   const obj = { disciplinas: [], faltas: {} };
   if (dadosSalvos) { obj.disciplinas = JSON.parse(dadosSalvos); }
   if (faltasSalvas) { obj.faltas = JSON.parse(faltasSalvas); }
+  migrarDisciplinas(obj.disciplinas);
   return obj;
-}
-
-const btnConfig = document.getElementById("btn-config");
-const dropdownConfig = document.getElementById("dropdown-config");
-const btnLogout = document.getElementById("btn-logout");
-
-btnConfig.addEventListener("click", function(e) {
-  e.stopPropagation();
-  dropdownConfig.classList.toggle("aberto");
-});
-
-document.addEventListener("click", function() {
-  dropdownConfig.classList.remove("aberto");
-});
-
-btnLogout.addEventListener("click", function() {
-  sessionStorage.removeItem("plannerUnirio_usuarioLogado");
-  window.location.href = "login.html";
-});
-
-function calcularMedia(notas) {
-  let soma = 0, qtd = 0;
-  for (const chave in notas) {
-    if (notas[chave] !== null && notas[chave] !== undefined) {
-      soma += parseFloat(notas[chave]);
-      qtd++;
-    }
-  }
-  if (qtd === 0) {
-    return null;
-  } else {
-    return parseFloat((soma / qtd).toFixed(1));
-  }
 }
 
 function abreviar(nome) {
@@ -82,18 +50,23 @@ function renderMedias(disciplinas) {
   let algumDado = false;
   for (let i = 0; i < disciplinas.length; i++) {
     const disc = disciplinas[i];
-    const media = calcularMedia(disc.notas);
-    if (media === null) continue;
+    const resultado = avaliarDisciplina(disc);
+    if (resultado.valor === null) continue;
     algumDado = true;
 
-    const pct = (media / 10) * 100;
+    const pct = Math.max(0, Math.min((resultado.valor / 10) * 100, 100));
     const abrev = abreviar(disc.nome);
+
+    let rotulo = resultado.valor;
+    if (resultado.aprovado !== null) {
+      rotulo += resultado.aprovado ? " ✓" : " ✕";
+    }
 
     const linha = document.createElement("div");
     linha.className = "linha";
     linha.innerHTML = '<span title="' + disc.nome + '">' + abrev + '</span>' +
                       '<div class="barra">' +
-                        '<div class="aluno" style="width:' + pct + '%">' + media + '</div>' +
+                        '<div class="aluno" style="width:' + pct + '%">' + rotulo + '</div>' +
                       '</div>';
     section.appendChild(linha);
   }
