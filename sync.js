@@ -170,7 +170,7 @@ async function descriptografarVault(vault, credenciais) {
     const texto = new TextDecoder().decode(aberto);
     return JSON.parse(texto);
   } catch (erro) {
-    throw new Error("Nao foi possivel descriptografar o cofre. Confira se a chave esta correta.");
+    throw new Error("Não foi possível descriptografar o cofre. Confira se a chave está correta.");
   }
 }
 
@@ -249,7 +249,7 @@ async function enviarDadosParaNuvem() {
   });
   const json = await resposta.json();
   if (!json.ok) {
-    throw new Error(json.error || "Nao foi possivel salvar.");
+    throw new Error(json.error || "Não foi possível salvar.");
   }
 
   localStorage.setItem("plannerAcademico_ultimaSync", new Date().toISOString());
@@ -275,9 +275,9 @@ async function carregarDaNuvem() {
   try {
     setSyncStatus("Carregando dados...", "info");
     await carregarDadosDaNuvem();
-    setSyncStatus("Dados carregados. Recarregue a pagina para ver tudo atualizado.", "ok");
+    setSyncStatus("Dados carregados. Recarregue a página para ver tudo atualizado.", "ok");
 
-    if (confirm("Dados carregados. Recarregar a pagina agora?")) {
+    if (confirm("Dados carregados. Recarregar a página agora?")) {
       window.location.reload();
     }
   } catch (erro) {
@@ -296,7 +296,7 @@ async function carregarDadosDaNuvem() {
   const resposta = await jsonp(PLANNER_SYNC_URL + "?" + params.toString());
 
   if (!resposta.ok) {
-    throw new Error(resposta.error || "Nao foi possivel carregar.");
+    throw new Error(resposta.error || "Não foi possível carregar.");
   }
 
   let data = {};
@@ -346,8 +346,8 @@ async function carregarAutomaticamenteAoAbrir() {
     }
   } catch (erro) {
     const mensagem = String(erro.message || erro);
-    if (mensagem.indexOf("Cofre nao encontrado") === -1) {
-      console.warn("Sincronizacao automatica falhou:", erro);
+    if (mensagem.indexOf("Cofre não encontrado") === -1) {
+      console.warn("Sincronização automática falhou:", erro);
     }
   }
 }
@@ -374,7 +374,7 @@ function observarLocalStorage() {
 function abrirSyncModal() {
   obterCredenciais().then(function(credenciais) {
     syncState.keyField.value = credenciais.accessKey;
-    setSyncStatus("Chave pronta. Alteracoes sao salvas automaticamente.", "info");
+    setSyncStatus("Chave pronta. Alterações são salvas automaticamente.", "info");
     syncState.modal.classList.add("sync-modal-aberto");
   });
 }
@@ -390,7 +390,7 @@ function importarChave() {
     return;
   }
   localStorage.setItem(PLANNER_ACCESS_KEY, chave);
-  setSyncStatus("Chave importada. Agora voce pode carregar ou salvar dados.", "ok");
+  setSyncStatus("Chave importada. Agora você pode carregar ou salvar dados.", "ok");
 }
 
 async function copiarChave() {
